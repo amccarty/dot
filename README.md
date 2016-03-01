@@ -10,11 +10,11 @@ The following runbook walks through the steps needed to install Anaconda Repo. T
 * CPU: 2 x 64-bit 2 2.8GHz 8.00GT/s CPUs or better
 * Memory: 32GB RAM (per 50 users)
 * Storage: Recommended minimum of 300GB; Additional space is recommended if the repository is will be used to store packages built by the customer.
-* Software Requirements
+### Software Requirements
 * RHEL/CentOS 6.7 (Other operating systems are supported, however this document assumes RHEL or CentOS 6.7)
 * MongoDB version 2.6
 * Anaconda Repo license file - given as part of the welcome packet - contact your sales representative or support representative if you cannot find your license.
-* Security Requirements
+### Security Requirements
 ** Privileged (root) access or sudo capabilities
 ** Ability to make (optional) iptables modifications
 
