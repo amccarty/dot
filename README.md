@@ -133,7 +133,7 @@ In a terminal window, create a new user account for Anaconda Repo named “binst
 
 ##### **6.2.** Run the Miniconda.sh installer script:
 
-* **Air Gap Installation:** Skip this step.
+* **Air Gap Installation:**
         
         sh /installer/anaconda-suite/miniconda/Miniconda-latest-Linux-x86_64.sh
         
