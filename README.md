@@ -15,8 +15,8 @@ The following runbook walks through the steps needed to install Anaconda Repo. T
 * MongoDB version 2.6
 * Anaconda Repo license file - given as part of the welcome packet - contact your sales representative or support representative if you cannot find your license.
 * Security Requirements
-* Privileged (root) access or sudo capabilities
-* Ability to make (optional) iptables modifications
+** Privileged (root) access or sudo capabilities
+** Ability to make (optional) iptables modifications
 
 **NOTE**: SELinux does not have to be disabled for Anaconda Repo operation 
 ### Network Requirements
