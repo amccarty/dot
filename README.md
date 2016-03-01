@@ -1,6 +1,6 @@
 # Anaconda Repo Runbook
 
-The following runbook walks through the steps needed to install Anaconda Repo. The runbook is designed for two audiences: those who have direct access to the internet for installation and those where such access is not available or restricted for security reasons. For these restricted a.k.a. "Air Gap" environments, Continuum ships the entire Anaconda Repo repository to the organization on portable storage medium or as a downloadable TAR archive.  Where necessary, additional instructions for Air Gap environments is noted. If you have any questions about the instructions, please contact your sales representative or Priority Support team, if applicable, for additional assistance.
+The following runbook walks through the steps needed to install Anaconda Repo. The runbook is designed for two audiences: those who have direct access to the internet for installation and those where such access is not available or restricted for security reasons. For these restricted a.k.a. "Air Gap" environments, Continuum ships the entire Anaconda Repo repository to the organization on portable storage medium or as a downloadable TAR archive.  Where necessary, additional instructions for Air Gap environments are noted. If you have any questions about the instructions, please contact your sales representative or Priority Support team, if applicable, for additional assistance.
 
 ![](https://www.lucidchart.com/publicSegments/view/591eb3b5-b326-49fb-addd-d733e6ceae18/image.png)
 ## Requirements
