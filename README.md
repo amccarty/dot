@@ -51,8 +51,8 @@ mongodb-org-server-2.6.8-1.x86_64.rpm
 mongodb-org-mongos-2.6.8-1.x86_64.rpm
 mongodb-org-2.6.8-1.x86_64.rpm
 ```
----
 **NOTE:** Some of the steps below contain alternative instructions for Air Gap installs, denoted by a bulleted "**Air Gap Installation**".
+
 ---
 
 ## Anaconda Repo Installation
