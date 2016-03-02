@@ -35,7 +35,8 @@ The following runbook walks through the steps needed to install Anaconda Repo. T
 Assuming the above requirements are met, there are no additional dependencies necessary for Anaconda Repo.
 
 ### Air Gap Media
-This document assumes that the Air Gap media is located at /installer on the server where the installation is taking place. 
+This document assumes that the Air Gap media is located at /installer on the server where the software is being installed.
+
 Air Gap media contents:
 
 ```
@@ -50,7 +51,7 @@ mongodb-org-server-2.6.8-1.x86_64.rpm
 mongodb-org-mongos-2.6.8-1.x86_64.rpm
 mongodb-org-2.6.8-1.x86_64.rpm
 ```
-**NOTE:** Many of the steps below contain special instructions for Air Gap installs, denoted by an "**Air Gap**" section immediately following the step in question.
+**NOTE:** Some of the steps below contain alternative instructions for Air Gap installs, denoted by a bulleted "**Air Gap Installation**".
 
 ## Anaconda Repo Installation
 The following sections detail the steps required to install Anaconda Repo.
