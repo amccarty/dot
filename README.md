@@ -34,6 +34,9 @@ The following runbook walks through the steps needed to install Anaconda Repo. T
 ### Other Requirements
 Assuming the above requirements are met, there are no additional dependencies necessary for Anaconda Repo.
 
+### Air Gap vs. Regular Installation
+This document contains installation instructions for two audiences: those with internet access on the destination server and those who have no access to internet resources. Many of the steps below have two sections: "*Air Gap Installation*" and "*Regular Installation*". Those without internet access should follow the *Air Gap Installation* instructions and those with internet access should follow *Regular Installation* instructions.
+
 ### Air Gap Media
 This document assumes that the Air Gap media is located at /installer on the server where the software is being installed.
 
