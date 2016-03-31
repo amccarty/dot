@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Anaconda Repo Runbook &mdash; docs 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="docs 0.1 documentation" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Demo</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="simple">
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Anaconda Repo Runbook</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#hardware-requirements">Hardware Requirements</a></li>
+<li><a class="reference internal" href="#software-requirements">Software Requirements</a></li>
+<li><a class="reference internal" href="#security-requirements">Security Requirements</a></li>
+<li><a class="reference internal" href="#other-requirements">Other Requirements</a></li>
+<li><a class="reference internal" href="#air-gap-vs-regular-installation">Air Gap vs. Regular Installation</a></li>
+<li><a class="reference internal" href="#air-gap-media">Air Gap Media</a><ul>
+<li><a class="reference internal" href="#anaconda-repo-installation">Anaconda Repo Installation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-mongodb">1. Install MongoDB</a></li>
+<li><a class="reference internal" href="#create-anaconda-repo-administrator-account">2. Create Anaconda Repo administrator account</a></li>
+<li><a class="reference internal" href="#create-anaconda-repo-directories">3. Create Anaconda Repo directories</a></li>
+<li><a class="reference internal" href="#give-the-binstar-user-ownership-of-directories">4. Give the binstar user ownership of directories:</a></li>
+<li><a class="reference internal" href="#switch-to-the-anaconda-repo-administrator-account">5. Switch to the Anaconda Repo administrator account</a></li>
+<li><a class="reference internal" href="#install-miniconda-bootstrap-version">6. Install Miniconda bootstrap version</a></li>
+<li><a class="reference internal" href="#install-anaconda-repo-enterprise-packages">7. Install Anaconda Repo Enterprise Packages</a></li>
+<li><a class="reference internal" href="#configure-anaconda-repo">8.Configure Anaconda Repo</a></li>
+<li><a class="reference internal" href="#set-up-automatic-restart-on-reboot-fail-or-error">9. Set up automatic restart on reboot, fail or error</a></li>
+<li><a class="reference internal" href="#install-anaconda-repo-license">10. Install Anaconda Repo License</a></li>
+<li><a class="reference internal" href="#mirror-anaconda-repo">11. Mirror Anaconda Repo</a></li>
+<li><a class="reference internal" href="#mirror-installers-for-miniconda">Mirror Installers for Miniconda</a></li>
+<li><a class="reference internal" href="#optional-mirror-the-anaconda-cluster-management-channel">Optional: Mirror the Anaconda Cluster Management channel</a></li>
+<li><a class="reference internal" href="#optional-adjust-iptables-to-accept-requests-on-port-80">Optional: Adjust iptables to accept requests on port 80</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/AnacondaRepo.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="anaconda-repo-runbook">
+<h1>Anaconda Repo Runbook<a class="headerlink" href="#anaconda-repo-runbook" title="Permalink to this headline">¶</a></h1>
+<p>This following runbook walks through the steps needed to install
+Anaconda Repo. The runbook is designed for two audiences: those who have
+direct access to the internet for installation and those where such
+access is not available or restricted for security reasons. For these
+restricted a.k.a. &#8220;Air Gap&#8221; environments, Continuum ships the entire
+Anaconda product suite on portable storage medium or as a downloadable
+TAR archive. Where necessary, additional instructions for Air Gap
+environments are noted. If you have any questions about the
+instructions, please contact your sales representative or Priority
+Support team, if applicable, for additional assistance.</p>
+<p><img alt="image0" src="https://www.lucidchart.com/publicSegments/view/591eb3b5-b326-49fb-addd-d733e6ceae18/image.png" /></p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+</div>
+<hr class="docutils" />
+<div class="section" id="hardware-requirements">
+<h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Physical server or VM</li>
+<li>CPU: 2 x 64-bit 2 2.8GHz 8.00GT/s CPUs or better</li>
+<li>Memory: 32GB RAM (per 50 users)</li>
+<li>Storage: Recommended minimum of 300GB; Additional space is
+recommended if the repository is will be used to store packages built
+by the customer.</li>
+</ul>
+</div>
+<div class="section" id="software-requirements">
+<h2>Software Requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>RHEL/CentOS 6.7 (Other operating systems are supported, however this
+document assumes RHEL or CentOS 6.7)</li>
+<li>MongoDB version 2.6</li>
+<li>Anaconda Repo license file - given as part of the welcome packet -
+contact your sales representative or support representative if you
+cannot find your license.</li>
+</ul>
+</div>
+<div class="section" id="security-requirements">
+<h2>Security Requirements<a class="headerlink" href="#security-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Privileged (root) access or sudo capabilities</li>
+<li>Ability to make (optional) iptables modifications</li>
+</ul>
+<p><strong>NOTE</strong>: SELinux does not have to be disabled for Anaconda Repo
+operation ### Network Requirements #### TCP Ports * Inbound TCP 8080
+(Anaconda Repo) * Inbound TCP 22 (SSH) * Outbound TCP 443 (to Anaconda
+Cloud or local Anaconda Repo) * Outbound TCP 25 (SMTP) * Outbound TCP
+389/636 (LDAP(s))</p>
+</div>
+<div class="section" id="other-requirements">
+<h2>Other Requirements<a class="headerlink" href="#other-requirements" title="Permalink to this headline">¶</a></h2>
+<p>Assuming the above requirements are met, there are no additional
+dependencies necessary for Anaconda Repo.</p>
+</div>
+<div class="section" id="air-gap-vs-regular-installation">
+<h2>Air Gap vs. Regular Installation<a class="headerlink" href="#air-gap-vs-regular-installation" title="Permalink to this headline">¶</a></h2>
+<p>As stated previously, this document contains installation instructions
+for two audiences: those with internet access on the destination
+server(s) and those who have no access to internet resources. Many of
+the steps below have two sections: &#8220;<strong>Air Gap Installation</strong>&#8221; and
+&#8220;<strong>Regular Installation</strong>&#8221;. Those without internet access should follow
+the <strong>Air Gap Installation</strong> instructions and those with internet access
+should follow <strong>Regular Installation</strong> instructions.</p>
+</div>
+<div class="section" id="air-gap-media">
+<h2>Air Gap Media<a class="headerlink" href="#air-gap-media" title="Permalink to this headline">¶</a></h2>
+<p>This document assumes that the Air Gap media is located at /installer on
+the server where the software is being installed.</p>
+<p>Air Gap media contents:</p>
+<div class="highlight-python"><div class="highlight"><pre>/installer
+└── anaconda-suite
+   ├── archive
+   ├── miniconda
+   └── pkgs
+mongodb-org-tools-2.6.8-1.x86_64.rpm
+mongodb-org-shell-2.6.8-1.x86_64.rpm
+mongodb-org-server-2.6.8-1.x86_64.rpm
+mongodb-org-mongos-2.6.8-1.x86_64.rpm
+mongodb-org-2.6.8-1.x86_64.rpm
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="anaconda-repo-installation">
+<h3>Anaconda Repo Installation<a class="headerlink" href="#anaconda-repo-installation" title="Permalink to this headline">¶</a></h3>
+<p>The following sections detail the steps required to install Anaconda
+Repo.</p>
+</div>
+</div>
+<div class="section" id="install-mongodb">
+<h2>1. Install MongoDB<a class="headerlink" href="#install-mongodb" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong> Skip this step.</p>
+</li>
+<li><p class="first"><strong>Regular Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>RPM_CDN=&quot;https://820451f3d8380952ce65-4cc6343b423784e82fd202bb87cf87cf.ssl.cf1.rackcdn.com&quot;
+curl -O $RPM_CDN/mongodb-org-tools-2.6.8-1.x86_64.rpm
+curl -O $RPM_CDN/mongodb-org-shell-2.6.8-1.x86_64.rpm
+curl -O $RPM_CDN/mongodb-org-server-2.6.8-1.x86_64.rpm
+curl -O $RPM_CDN/mongodb-org-mongos-2.6.8-1.x86_64.rpm
+curl -O $RPM_CDN/mongodb-org-2.6.8-1.x86_64.rpm
+</pre></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>sudo yum install -y /installer/mongodb-org*
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Regular Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>sudo yum install -y mongodb-org*
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>sudo service mongod start
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>sudo service mongod status
+mongod (pid 1234) is running...
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> Additional mongodb installation information can be found here.</p>
+</div>
+<div class="section" id="create-anaconda-repo-administrator-account">
+<h2>2. Create Anaconda Repo administrator account<a class="headerlink" href="#create-anaconda-repo-administrator-account" title="Permalink to this headline">¶</a></h2>
+<p>In a terminal window, create a new user account for Anaconda Repo named
+“binstar”</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo useradd -m binstar
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> The binstar user is the default for installing Anaconda Repo.
+Any username can be used, however the use of the root user is
+discouraged.</p>
+</div>
+<div class="section" id="create-anaconda-repo-directories">
+<h2>3. Create Anaconda Repo directories<a class="headerlink" href="#create-anaconda-repo-directories" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>sudo mkdir -m 0770 /etc/binstar
+sudo mkdir -m 0770 /var/log/anaconda-server
+sudo mkdir -m 0770 -p /opt/anaconda-server/package-storage
+sudo mkdir -m 0770 /etc/binstar/mirrors
+</pre></div>
+</div>
+</div>
+<div class="section" id="give-the-binstar-user-ownership-of-directories">
+<h2>4. Give the binstar user ownership of directories:<a class="headerlink" href="#give-the-binstar-user-ownership-of-directories" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>sudo chown -R binstar. /etc/binstar
+sudo chown -R binstar. /var/log/anaconda-server
+sudo chown -R binstar. /opt/anaconda-server/package-storage
+sudo chown -R binstar. /etc/binstar/mirrors
+</pre></div>
+</div>
+</div>
+<div class="section" id="switch-to-the-anaconda-repo-administrator-account">
+<h2>5. Switch to the Anaconda Repo administrator account<a class="headerlink" href="#switch-to-the-anaconda-repo-administrator-account" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>sudo su - binstar
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-miniconda-bootstrap-version">
+<h2>6. Install Miniconda bootstrap version<a class="headerlink" href="#install-miniconda-bootstrap-version" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong> Skip this step.</p>
+</li>
+<li><p class="first"><strong>Regular Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>curl &#39;http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh&#39; &gt; Miniconda.sh
+</pre></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sh</span> <span class="o">/</span><span class="n">installer</span><span class="o">/</span><span class="n">anaconda</span><span class="o">-</span><span class="n">suite</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Regular Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>sh Miniconda.sh
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>Welcome to Miniconda (by Continuum Analytics, Inc.)
+In order to continue the installation process, please review the license agreement.
+Please, press ENTER to continue. Do you approve the license terms? [yes|no] yes
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Miniconda will now be installed into this location:
+/home/binstar/miniconda2
+-Press ENTER to confirm the location
+-Press CTRL-C to abort the installation
+-Or specify a different location below
+ [/home/binstar/miniconda2] &gt;&gt;&gt;&quot; [Press ENTER]
+ PREFIX=/home/binstar/miniconda2
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Do you wish the installer to prepend the Miniconda install location to PATH in your /home/binstar/.bashrc ? [yes|no] yes
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>source ~/.bashrc
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-anaconda-repo-enterprise-packages">
+<h2>7. Install Anaconda Repo Enterprise Packages<a class="headerlink" href="#install-anaconda-repo-enterprise-packages" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong> Install the Anaconda Repo channel from
+local files.</p>
+<div class="highlight-python"><div class="highlight"><pre>conda config --add channels  file:///installer/anaconda-suite/pkgs/
+conda config --remove channels defaults --force
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Regular Installation:</strong> Install the Anaconda Repo channel from
+Anaconda Cloud.</p>
+<div class="highlight-python"><div class="highlight"><pre>export TOKEN=&lt;your Anaconda Cloud token&gt;
+conda config --add channels https://conda.anaconda.org/t/$TOKEN/binstar/
+conda config --add channels https://conda.anaconda.org/t/$TOKEN/anaconda-server/
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Where <strong>“TOKEN”</strong> is the Anaconda Repo token you should have received
+from Continuum Support. This adds the correct channels to conda by
+updating the <code class="docutils literal"><span class="pre">/home/binstar/.condarc</span></code> file.</p>
+<div class="highlight-python"><div class="highlight"><pre>conda install anaconda-client binstar-server binstar-static cas-mirror
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-anaconda-repo">
+<h2>8.Configure Anaconda Repo<a class="headerlink" href="#configure-anaconda-repo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">anaconda</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">init</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>anaconda-server-config --set fs_storage_root /opt/anaconda-server/package-storage
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>anaconda-server-create-user --username &quot;superuser&quot; --password &quot;yourpassword&quot; --email &quot;your@email.com&quot; --superuser
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> to ensure the bash shell does not process any of the
+characters in this password, limit the password to lower case letters,
+upper case letters and numbers, with no punctuation. After setup the
+password can be changed with the web interface.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">anaconda</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="n">setup</span> <span class="o">--</span><span class="n">execute</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-up-automatic-restart-on-reboot-fail-or-error">
+<h2>9. Set up automatic restart on reboot, fail or error<a class="headerlink" href="#set-up-automatic-restart-on-reboot-fail-or-error" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">anaconda</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">supervisord</span><span class="o">-</span><span class="n">config</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This step:</p>
+<ul>
+<li><p class="first">creates the following entry in the binstar user’s crontab:</p>
+<p><code class="docutils literal"><span class="pre">&#64;reboot</span> <span class="pre">/home/binstar/miniconda/bin/supervisord</span></code></p>
+</li>
+<li><p class="first">generates the <code class="docutils literal"><span class="pre">/home/binstar/miniconda/etc/supervisord.conf</span></code> file</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>supervisorctl status
+
+binstar-server RUNNING   pid 10831, uptime 0:00:05
+binstar-worker RUNNING   pid 2784, uptime 0:00:04
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-anaconda-repo-license">
+<h2>10. Install Anaconda Repo License<a class="headerlink" href="#install-anaconda-repo-license" title="Permalink to this headline">¶</a></h2>
+<p>Visit <strong>http://your.anaconda.server:8080</strong>. Follow the onscreen
+instructions and upload your license file. Log in with the superuser
+user and password configured above. After submitting, you should see the
+login page.</p>
+<p><strong>NOTE:</strong> Contact your sales representative or support representative if
+you cannot find or have questions about your license.</p>
+</div>
+<div class="section" id="mirror-anaconda-repo">
+<h2>11. Mirror Anaconda Repo<a class="headerlink" href="#mirror-anaconda-repo" title="Permalink to this headline">¶</a></h2>
+<p>Now that Anaconda Repo is installed, we want to mirror packages into our
+local repository. If mirroring from Anaconda Cloud, the process will
+take hours or longer, depending on the available internet bandwidth. Use
+the <code class="docutils literal"><span class="pre">anaconda-server-sync-conda</span></code> command to mirror all Anaconda
+packages locally under the &#8220;anaconda&#8221; user account.</p>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong> Since we&#8217;re mirroring from a local
+filesystem, some additional configuration is necessary.</p>
+<p><strong>1.</strong> Create a mirror config file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">binstar</span><span class="o">/</span><span class="n">mirrors</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>Add the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>channels:
+  - file:///installer/anaconda-suite/pkgs
+</pre></div>
+</div>
+<p><strong>2.</strong> Mirror the Anaconda packages:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">anaconda</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">sync</span><span class="o">-</span><span class="n">conda</span> <span class="o">--</span><span class="n">mirror</span><span class="o">-</span><span class="n">config</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">binstar</span><span class="o">/</span><span class="n">mirrors</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Regular Installation:</strong> Mirror from Anaconda Cloud.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">anaconda</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">sync</span><span class="o">-</span><span class="n">conda</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>NOTE:</strong> Depending on the type of installation, this process may take
+30-90 minutes.</p>
+<p>To verify the local Anaconda Repo repo has been populated, visit
+<strong>http://your.anaconda.server:8080/anaconda</strong> in a browser.</p>
+</div>
+<div class="section" id="mirror-installers-for-miniconda">
+<h2>Mirror Installers for Miniconda<a class="headerlink" href="#mirror-installers-for-miniconda" title="Permalink to this headline">¶</a></h2>
+<p>Miniconda installers can be served by Anaconda Repo via the <strong>static</strong>
+directory located at
+<strong>/home/binstar/miniconda2/lib/python2.7/site-packages/binstar/static/extras</strong>.
+This is <strong>required</strong> for Anaconda Cluster integration. To serve up the
+latest Miniconda installers for each platform, download them and copy
+them to the <strong>extras</strong> directory:</p>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre># miniconda installers
+mkdir -p /tmp/extras
+pushd /tmp/extras
+URL=&quot;file:///installer/anaconda-suite/miniconda/&quot;
+versions=&quot;Miniconda3-latest-Linux-x86_64.sh Miniconda3-latest-MacOSX-x86_64.sh Miniconda3-latest-Windows-x86.exe Miniconda3-latest-Windows-x86_64.exe Miniconda-latest-Linux-x86_64.sh Miniconda-latest-MacOSX-x86_64.sh Miniconda-latest-Windows-x86.exe Miniconda-latest-Windows-x86_64.exe
+&quot;
+for installer in $versions
+do
+    curl -O $URL$installer
+done
+# Move installers into static directory
+popd
+cp -a /tmp/extras /home/binstar/miniconda2/lib/python2.7/site-packages/binstar/static
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Regular Installation:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre># miniconda installers
+mkdir -p /tmp/extras
+pushd /tmp/extras
+URL=&quot;https://repo.continuum.io/miniconda/&quot;
+versions=&quot;Miniconda3-latest-Linux-x86_64.sh Miniconda3-latest-MacOSX-x86_64.sh Miniconda3-latest-Windows-x86.exe Miniconda3-latest-Windows-x86_64.exe Miniconda-latest-Linux-x86_64.sh Miniconda-latest-MacOSX-x86_64.sh Miniconda-latest-Windows-x86.exe Miniconda-latest-Windows-x86_64.exe
+&quot;
+for installer in $versions
+do
+    curl -O $URL$installer
+done
+# Move installers into static directory
+popd
+cp -a /tmp/extras /home/binstar/miniconda2/lib/python2.7/site-packages/binstar/static
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="optional-mirror-the-anaconda-cluster-management-channel">
+<h2>Optional: Mirror the Anaconda Cluster Management channel<a class="headerlink" href="#optional-mirror-the-anaconda-cluster-management-channel" title="Permalink to this headline">¶</a></h2>
+<p>If the local Anaconda Repo will be used by Anaconda Cluster nodes (head
+or compute), the recommended method is to mirror using an
+“anaconda-cluster” user. To mirror the Anaconda Cluster Management repo,
+create the mirror config YAML file below:</p>
+<ul>
+<li><p class="first"><strong>Regular Installation:</strong></p>
+<p><strong>1.</strong> Create a mirror config file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">binstar</span><span class="o">/</span><span class="n">mirrors</span><span class="o">/</span><span class="n">anaconda</span><span class="o">-</span><span class="n">cluster</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p><strong>2.</strong> Add the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>channels:
+  - https://conda.anaconda.org/t/&lt;TOKEN&gt;/anaconda-cluster
+</pre></div>
+</div>
+<p><strong>3.</strong> Mirror the Anaconda Cluster Management packages:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">anaconda</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">sync</span><span class="o">-</span><span class="n">conda</span> <span class="o">--</span><span class="n">mirror</span><span class="o">-</span><span class="n">config</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">binstar</span><span class="o">/</span><span class="n">mirrors</span><span class="o">/</span><span class="n">anaconda</span><span class="o">-</span><span class="n">cluster</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">account</span><span class="o">=</span><span class="n">anaconda</span><span class="o">-</span><span class="n">cluster</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Where <strong>“TOKEN”</strong> is the Anaconda Cluster Mangagement token you should
+have received from Continuum Support.</p>
+<ul>
+<li><p class="first"><strong>Air Gap Installation:</strong></p>
+<p><strong>1.</strong> Create a mirror config file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">binstar</span><span class="o">/</span><span class="n">mirrors</span><span class="o">/</span><span class="n">anaconda</span><span class="o">-</span><span class="n">cluster</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p><strong>2.</strong> Add the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>channels:
+  - file:///installer/anaconda-cluster/pkgs
+</pre></div>
+</div>
+<p><strong>3.</strong> Mirror the Anaconda Cluster Management packages:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">anaconda</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">sync</span><span class="o">-</span><span class="n">conda</span> <span class="o">--</span><span class="n">mirror</span><span class="o">-</span><span class="n">config</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">binstar</span><span class="o">/</span><span class="n">mirrors</span><span class="o">/</span><span class="n">anaconda</span><span class="o">-</span><span class="n">cluster</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">account</span><span class="o">=</span><span class="n">anaconda</span><span class="o">-</span><span class="n">cluster</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>NOTE:</strong>Ignore any license warnings. Additional mirror
+filtering/whitelisting/blacklisting options can be found here.</p>
+</div>
+<div class="section" id="optional-adjust-iptables-to-accept-requests-on-port-80">
+<h2>Optional: Adjust iptables to accept requests on port 80<a class="headerlink" href="#optional-adjust-iptables-to-accept-requests-on-port-80" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to enable clients to access an Anaconda Repo on standard
+ports is to configure the server to redirect traffic received on
+standard HTTP port 80 to the standard Anaconda Repo HTTP port 8080.</p>
+<p><strong>NOTE:</strong> These commands assume the default state of iptables on CentOS
+6.7 which is “on” and allowing inbound SSH access on port 22. Take
+caution; mistakes with iptables rules can render a remote machine
+inaccessible.</p>
+<p><strong>Allow inbound access to tcp port 80:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>sudo iptables -I INPUT -i eth0 -p tcp --dport 80 -m comment --comment &quot;# Anaconda Repo #&quot; -j ACCEPT
+</pre></div>
+</div>
+<p><strong>Allow inbound access to tcp port 8080:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>sudo iptables -I INPUT -i eth0 -p tcp --dport 8080 -m comment --comment &quot;# Anaconda Repo #&quot; -j ACCEPT
+</pre></div>
+</div>
+<p><strong>Redirect inbound requests to port 80 to port 8080:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -m comment --comment &quot;# Anaconda Repo #&quot; -j REDIRECT --to-port 8080
+</pre></div>
+</div>
+<p><strong>Display the current iptables rules:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>sudo iptables -L -n
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:8080 /* # Anaconda Repo # */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:80 /* # Anaconda Repo # */
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED
+ACCEPT     icmp --  0.0.0.0/0            0.0.0.0/0
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22
+REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> the PREROUTING (nat) iptables chain is not displayed by
+default; to show it, use:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo iptables -L -n -t nat
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination
+REDIRECT   tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:80 /* # Anaconda Repo # */ redir ports 8080
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+</pre></div>
+</div>
+<p>Write the running iptables configuration to /etc/sysconfig/iptables:</p>
+<div class="highlight-python"><div class="highlight"><pre>   sudo service iptables save
+
+An example of using :red:`interpreted text`
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Docs.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
